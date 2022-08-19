@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSN.css">
+    <title>Beräkna fribelopp</title>
+</head>
+<body class="content">
+
+    <h3>Beräkna ditt fribelopp</h3>
+    <h4>Fribeloppet är det du får ha som inkomst utan att det minskar ditt CSN,<br> nedan kan du läsa vad sin gills till inkomst</h4>
+    <form>
+        <label class = "formtext" for="rate">Studiehastighet (%): </label>
+        <input class = "form" id = "rate" type="text" />
+        <label class = "formtext" for="weeks">Antal veckor med CSN (1-26):  </label>
+        <input class = "form" id = "weeks" type="text"/>
+        <input id = "button" type="button" onClick="CalculateFreeAmount()" Value="Kolla fribelopp" />
+    </form>
+    <p class = "formtext">I snitt per månad kan du tjäna: <br>
+        <span id = "result" ></span>
+    </p>
+
+    <div>
+        <div >
+            <h4 class = "formtext"  id="h-Detharraknassominkomst">Det här räknas som inkomst</h4>
+                <p class = "formtext" Du ska ta med skattepliktiga inkomster från inkomstslagen tjänst, näringsverksamhet och kapital. <br>Det kan till exempel vara</p>
+                    <ul class = "formtext">
+                        <li>lön</li><li>a-kassa</li>
+                        <li>föräldrapenning</li><li>vinst från försäljning av bostad</li>
+                        <li>inkomster från aktieförsäljning och aktieutdelning<br/></li>
+                    </ul>            
+        </div>
+        <div>
+            <a href ="https://www.csn.se/fragor-och-svar/hur-stor-inkomst-far-jag-ha-nar-jag-studerar-med-studiemedel/inkomst-och-fribelopp.html#expand:svid10_2639ba8617c4bb0dbdcfd">Läs mer hos CSN.se</a>
+        </div>
+        
+    </div>
+
+</body>
+</html>
+
+<script>
+function CalculateFreeAmount()
+{
+    weeks = document.getElementById("weeks").value
+    switch (document.getElementById("rate").value)
+            {
+                case "100":
+                document.getElementById("result").innerHTML =  (182487 - (4680 * weeks) + 4680)/6;
+                    
+                    break;
+                case "75":
+                document.getElementById("result").innerHTML =  (183578 - (3507 * weeks) + 3507)/6;
+                    break;
+                case "50":
+                document.getElementById("result").innerHTML =  (184761 - (2338 * weeks) + 2338)/6;
+                    break;
+                default:
+                document.getElementById("result").innerHTML =  "Ogiltig studiehastighet";
+                    break;
+            }
+}
+
+</script>
+
+<style>.form {
+    width: 100%;
+    padding: 1%;
+    margin: 1%;
+    box-sizing: border-box;
+  }
+  .content {
+    max-width: 500px;
+    margin: auto;
+  }
+
+
+form:focus {
+    border: 3px solid #555;
+  }
+
+ body {background-color:lavender}
+
+ #button {
+    transition-duration: 0.4s;
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 100%;
+  }
+  
+  #button:hover {
+    background-color:#555;
+    color: white;
+  }
+
+  #result {
+    font-family: sans-serif;
+    font-size: large;
+  }
+
+h3 {
+    font-family: sans-serif;
+    font-size: 200%;
+}
+
+h4{
+    font-family: sans-serif;
+    font-size: large;
+
+}
+
+.formtext {
+    font-family: sans-serif;
+    font-size: large;
+}</style>
